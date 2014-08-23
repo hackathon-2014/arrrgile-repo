@@ -20,9 +20,6 @@ class CreateStoriesTable extends Migration {
 			# The title of the story, created when a user first builds said sotry
 			$table->string('title');
 			
-			# A path to a file
-			$table->string('file_name')->nullable();
-			
 			# The the text string that tells the story
 			$table->string('text')->nullable();
 			

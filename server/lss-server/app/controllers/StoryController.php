@@ -94,15 +94,21 @@ class StoryController extends \BaseController {
 		
 		$reply->user_id = $data['user_id'];
 		
-		// come back to this
-		//
-		//$reply->file_name = $data['file_name'];
+		#decode will be jpeg
+		$image = base64_decode($data['file_name']);
+		
+		# path to root and img folder
+		$destinationPath = public_path() . "/img/";
+		
+		$fileName = bin2hex(mcrypt_create_iv(8, MCRYPT_DEV_URANDOM));
+						
+		file_put_contents($destinationPath . $fileName .'.jpeg', $image);
+		
+		#store location in db
+		$reply->file_name = $fileName .'.jpeg';
+		
 		
 		$story->replies()->save($reply);
-		
-		var_dump($reply);
-		
-		
 		
 		
 		# Distance
@@ -118,7 +124,7 @@ class StoryController extends \BaseController {
 		$distance->distance_traveled = 0;
 		
 		#Current Latitude (SPARC HQ)
-		$distance->location_current_lat =  $data['location_current_lat'] ;
+		$distance->location_current_lat = $data['location_current_lat'];
 		
 		# Current Longitude (SPARC HQ)
 		$distance->location_current_long =  $data['location_current_long'];
@@ -156,7 +162,7 @@ class StoryController extends \BaseController {
 		//$stories = Story::find($id);
 		
 		# Get the story and the the id
-		$story = Story::find($id)->with('replies.distance')->get();
+		$story = Story::with('replies.distance')->find($id);
 		
 		# return as json format 
 		return Response::json($story);
