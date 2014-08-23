@@ -1,0 +1,24 @@
+2014-08-23 11:07:16.707 lss[4021:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-23 11:07:16.738 lss[4021:70b] Unlimited access to network resources
+2014-08-23 11:07:17.221 lss[4021:70b] [CDVTimer][keyboard] 0.066996ms
+2014-08-23 11:07:17.222 lss[4021:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-23 11:07:17.222 lss[4021:70b] [CDVTimer][statusbar] 0.445962ms
+2014-08-23 11:07:17.223 lss[4021:70b] [CDVTimer][TotalPluginStartup] 1.451969ms
+2014-08-23 11:07:17.439 lss[4021:70b] Resetting plugins due to page load.
+2014-08-23 11:07:17.737 lss[4021:70b] Finished load of: file:///Users/prashantkatwa/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/185BAD3A-E7E0-47EF-887F-E81921459AE5/lss.app/www/index.html#/tab/dash
+2014-08-23 11:12:50.617 lss[4535:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-23 11:12:50.627 lss[4535:70b] Unlimited access to network resources
+2014-08-23 11:12:50.648 lss[4535:70b] [CDVTimer][keyboard] 0.091016ms
+2014-08-23 11:12:50.649 lss[4535:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-23 11:12:50.649 lss[4535:70b] [CDVTimer][statusbar] 0.514984ms
+2014-08-23 11:12:50.650 lss[4535:70b] [CDVTimer][TotalPluginStartup] 1.644015ms
+2014-08-23 11:12:50.768 lss[4535:70b] Resetting plugins due to page load.
+2014-08-23 11:12:50.967 lss[4535:70b] Finished load of: file:///Users/prashantkatwa/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/185BAD3A-E7E0-47EF-887F-E81921459AE5/lss.app/www/index.html#/tab/dash
+2014-08-23 11:13:35.855 lss[4743:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-23 11:13:35.861 lss[4743:70b] Unlimited access to network resources
+2014-08-23 11:13:35.876 lss[4743:70b] [CDVTimer][keyboard] 0.059009ms
+2014-08-23 11:13:35.876 lss[4743:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-23 11:13:35.877 lss[4743:70b] [CDVTimer][statusbar] 0.344038ms
+2014-08-23 11:13:35.877 lss[4743:70b] [CDVTimer][TotalPluginStartup] 1.123965ms
+2014-08-23 11:13:35.909 lss[4743:70b] Resetting plugins due to page load.
+2014-08-23 11:13:36.019 lss[4743:70b] Finished load of: file:///Users/prashantkatwa/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/185BAD3A-E7E0-47EF-887F-E81921459AE5/lss.app/www/index.html#/tab/dash
