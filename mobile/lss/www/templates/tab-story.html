@@ -1,11 +1,15 @@
 <ion-view title="Story">
+  <ion-nav-back-button class="button-clear"
+    ng-click="goBack()">
+    <i class="ion-arrow-left-c"></i> Back
+  </ion-nav-back-button>
   <ion-content class="has-header padding app-story">
     <div class="story-background">
         <h1>{{story.name}}</h1>
     </div>
 
       <div ng-repeat="reply in story.replies" type="" class="">
-        <img src="{{reply.file_name}}" />
+        <img ng-src="{{reply.file_name}}" />
         <h2>{{reply.text}}</h2>
       </div>
 

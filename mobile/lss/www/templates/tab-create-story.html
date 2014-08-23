@@ -4,19 +4,23 @@
     <div class="padding">
       <h2>Tell the world.</h2>
     </div>
-    <div class="list">
+    <form ng-submit="createStory(form)" class="list">
       <label class="item item-input item-stacked-label">
-        <span class="input-label">Test</span>
-        <input type="text" placeholder="test">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="Name your story" ng-model="form.title">
       </label>
+      <button class="button button-positive" ng-click="takePicture()">
+        Add photo
+      </button>
+      
       <label class="item item-input item-stacked-label">
         <span class="input-label">The Story</span>
-        <textarea placeholder="Your story begins here..." rows="4"></textarea>
+        <textarea placeholder="Your story begins here..." rows="4" ng-model="form.text"></textarea>
       </label>
-      <button class="button button-full button-positive">
+      <button type="submit" class="button button-full button-positive">
         Submit
       </button>
-    </div>
+    </form>
     <!-- If not logged in -->
   </ion-content>
 </ion-view>
