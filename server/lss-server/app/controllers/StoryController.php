@@ -30,7 +30,7 @@ class StoryController extends \BaseController {
 		$stories = Story::with('replies.distance')->get();
 		
 		# return as json format 
-		return Response::json($stories);
+		return Response::json($stories)->setCallback(Input::get('callback'));
 	}
 
 
@@ -84,9 +84,6 @@ class StoryController extends \BaseController {
 		
 		$reply = new Reply();
 		
-		# An image as base64
-		//$reply->file_name = $data['file_name'];
-		
 		# The the text string that tells the story
 		$reply->text = $data['text'];
 
@@ -94,6 +91,7 @@ class StoryController extends \BaseController {
 		
 		$reply->user_id = $data['user_id'];
 		
+		# An image as base64
 		#decode will be jpeg
 		$image = base64_decode($data['file_name']);
 		
@@ -136,7 +134,7 @@ class StoryController extends \BaseController {
 			# Eloquent Magic
 			$reply->distance()->save($distance);
 			
-			return Response::json($story);
+			return Response::json($story)->setCallback(Input::get('callback'));
 		
 		}
 		
@@ -165,7 +163,7 @@ class StoryController extends \BaseController {
 		$story = Story::with('replies.distance')->find($id);
 		
 		# return as json format 
-		return Response::json($story);
+		return Response::json($story)->setCallback(Input::get('callback'));
 	}
 
 
