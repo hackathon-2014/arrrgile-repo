@@ -21,16 +21,16 @@ class CreateDistancesTable extends Migration {
 			$table->integer('story_id')->nullable();
 			
 			# fk of the response @ responses table
-			$table->integer('response_id')->nullable();
+			$table->integer('reply_id')->nullable();
 			
 			# Distance the sotry has traveled
 			$table->integer('distance_traveled')->nullable();
 				
 			#Current Latitude 
-			$table->integer('location_current_lat');
+			$table->float('location_current_lat');
 	
 			# Current Longitude
-			$table->integer('location_current_long');	
+			$table->float('location_current_long');	
 			
 			# This generates two columns: `created_at` and `updated_at`
 			$table->timestamps();

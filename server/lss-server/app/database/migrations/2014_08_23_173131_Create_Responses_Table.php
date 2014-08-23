@@ -12,7 +12,7 @@ class CreateResponsesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('responses', function(Blueprint $table)
+		Schema::create('replies', function(Blueprint $table)
 		{
 			# AI PK	
 			$table->increments('id');
@@ -47,7 +47,7 @@ class CreateResponsesTable extends Migration {
 	{
 		
 		// drop the table
-		Schema::drop('responses');
+		Schema::drop('replies');
 	
 	}
 

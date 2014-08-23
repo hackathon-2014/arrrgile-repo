@@ -1,6 +1,6 @@
 <?php
 
-class StoryTableSeeder extends Seeder {
+class ReplyTableSeeder extends Seeder {
 
 	/**
 	 * Run the database seeds.
@@ -10,25 +10,24 @@ class StoryTableSeeder extends Seeder {
 	public function run()
 	{
 		
-		#First story
 		#To create a new record in the database from a model, simply create a new model instance and call the save method.
 		# Instantiate new instance of said model
-		$story = new Story();
+		$reply = new Reply();
 		
-		# The title of the story, created when a user first builds said sotry
-		$story->title = 'At 100 Years Old';
+		# fk of the sotry @ stories table
+		$reply->story_id = '1';
 		
 		# The the text string that tells the story
-		$story->text= 'In ut nullam quam consequat magna sapien curabitur dictum dictumst velit, nam suspendisse tempor consectetur nibh suspendisse nulla donec ma';
+		$reply->text = 'Response ullam quam consequat magna sapien curabitur dictum dictumst velit, nam suspendisse tempor consectetur nibh suspendisse nulla donec ma';
+		
 		# fk of user id
-		$story->user_id= '1';
+		$reply->user_id= '1';
 		
 		# Eloquent Magic
-		$story->save();
-	
+		$reply->save();
+		
 		# Let us know what happned.
 		$this->command->info('Seeded Story Table'); 
-		
 	}
 
 }
