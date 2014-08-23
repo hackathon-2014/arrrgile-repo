@@ -47,6 +47,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.create-story', {
+      url: '/create-story',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/tab-create-story.html',
+          controller: 'CreateStoryCtrl'
+        }
+      }
+    })
 
     .state('tab.mystories', {
       url: '/my-stories',

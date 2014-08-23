@@ -2,6 +2,9 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {
 })
+.controller('CreateStoryCtrl', function($scope) {
+})
+
 
 .controller('MyStoriesCtrl', function($scope, Stories) {
   $scope.stories = Stories.all();
