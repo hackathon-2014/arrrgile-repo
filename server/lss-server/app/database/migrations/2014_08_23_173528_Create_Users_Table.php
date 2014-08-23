@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+class CreateUsersTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
@@ -11,8 +12,8 @@ use Illuminate\Database\Migrations\Migration;
 	public function up()
 	{
 		// create the users table and columns
-		Schema::create('users', function($table){
-			
+		Schema::create('users', function(Blueprint $table)
+		{	
 			# AI PK	
 			$table->increments('id');
 			
