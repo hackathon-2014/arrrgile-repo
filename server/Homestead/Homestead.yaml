@@ -1,0 +1,21 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/Documents/arrrgile-repo/server/lss-server #local root
+      to: /home/vagrant/Code #vagrant root
+
+sites:
+    - map: lss.app
+      to: /home/vagrant/Code/Laravel/public
+
+variables:
+    - key: APP_ENV
+      value: local
