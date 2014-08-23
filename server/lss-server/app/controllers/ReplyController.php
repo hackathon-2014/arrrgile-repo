@@ -31,7 +31,40 @@ class ResponseController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		
+		#Reply
+		# post data					
+		$data = Input::all();	
+
+		$reply = new Reply();
+		
+		# The the text string that tells the story
+		$reply->text = $data['text'];
+
+		$reply->story_id = $story->id;
+		
+		$reply->user_id = $data['user_id'];
+	
+		# if the file is provide, do the following, please! 
+		if(isset($data['file_name']))
+		{	
+			# An image as base64
+			#decode will be jpeg
+			$image = base64_decode($data['file_name']);
+			
+			# path to root and img folder
+			$destinationPath = public_path() . "/img/";
+				
+			$fileName = bin2hex(mcrypt_create_iv(8, MCRYPT_DEV_URANDOM));
+							
+			file_put_contents($destinationPath . $fileName .'.jpeg', $image);
+			
+			#store location in db
+			$reply->file_name = $fileName .'.jpeg';
+		}	
+		
+		$story->replies()->save($reply);
+		
 	}
 
 

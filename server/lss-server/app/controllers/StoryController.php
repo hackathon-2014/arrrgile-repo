@@ -91,30 +91,31 @@ class StoryController extends \BaseController {
 		
 		$reply->user_id = $data['user_id'];
 		
-		# An image as base64
-		#decode will be jpeg
-		$image = base64_decode($data['file_name']);
-		
-		# path to root and img folder
-		$destinationPath = public_path() . "/img/";
-		
-		$fileName = bin2hex(mcrypt_create_iv(8, MCRYPT_DEV_URANDOM));
-						
-		file_put_contents($destinationPath . $fileName .'.jpeg', $image);
-		
-		#store location in db
-		$reply->file_name = $fileName .'.jpeg';
-		
-		
-		$story->replies()->save($reply);
-		
+		if(isset($data['file_name']))
+		{
+			# An image as base64
+			#decode will be jpeg
+			$image = base64_decode($data['file_name']);
+			
+			# path to root and img folder
+			$destinationPath = public_path() . "/img/";
+			
+			$fileName = bin2hex(mcrypt_create_iv(8, MCRYPT_DEV_URANDOM));
+							
+			file_put_contents($destinationPath . $fileName .'.jpeg', $image);
+			
+			#store location in db
+			$reply->file_name = $fileName .'.jpeg';
+			
+			
+			$story->replies()->save($reply);
+		}
 		
 		# Distance
 		$distance = new Distance();
 		
 		# fk of the sotry @ stories table
 		$distance->reply_id = $reply->id;
-		
 		
 		# Distance the sotry has traveled, 0 as it is a new story
 		$distance->distance_traveled = 0;
