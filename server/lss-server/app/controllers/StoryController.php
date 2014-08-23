@@ -115,8 +115,6 @@ class StoryController extends \BaseController {
 		# fk of the sotry @ stories table
 		$distance->reply_id = $reply->id;
 		
-		#fk of the sotry @ stories table
-		//$distance->reply_id = 1;
 		
 		# Distance the sotry has traveled, 0 as it is a new story
 		$distance->distance_traveled = 0;
