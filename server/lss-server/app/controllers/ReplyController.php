@@ -1,6 +1,6 @@
 <?php
 
-class ResponseController extends \BaseController {
+class ReplyController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -41,8 +41,10 @@ class ResponseController extends \BaseController {
 		# The the text string that tells the story
 		$reply->text = $data['text'];
 
-		$reply->story_id = $story->id;
+		# the story id
+		$reply->story_id = $data['story_id'];
 		
+		# the user id
 		$reply->user_id = $data['user_id'];
 	
 		# if the file is provide, do the following, please! 
@@ -63,8 +65,47 @@ class ResponseController extends \BaseController {
 			$reply->file_name = $fileName .'.jpeg';
 		}	
 		
-		$story->replies()->save($reply);
+		# Eloquent magic
+		$reply->save();
 		
+		
+		#distance 
+		function calculateDistance($latitude1, $longitude1, $latitude2, $longitude2) {
+		    $theta = $longitude1 - $longitude2;
+		    $miles = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta)));
+		    $miles = acos($miles);
+		    $miles = rad2deg($miles);
+		    $miles = $miles * 60 * 1.1515;
+		    return $miles; 	
+		}		
+		
+		#Get the the lat and long from the distance table, origin
+		$OG_distance = Distance::find($data['story_id']);
+		
+		# OG distance
+		$point1_lat = $OG_distance->location_current_lat;
+		$point1_lng = $OG_distance->location_current_long;
+		
+		# User Distance
+		$point2_lat = $data['location_current_lat'];
+		$point2_lng = $data['location_current_long'];
+		
+		$p2p_distance = calculateDistance($point1_lat, $point1_lng, $point2_lat,$point2_lng);
+		
+		$distance = new Distance();
+		
+		$distance->distance_traveled = $p2p_distance;
+			
+		$distance->reply_id = $reply->id;
+		
+		$distance->location_current_lat = $data['location_current_lat'];
+		
+		$distance->location_current_long = $data['location_current_long'];
+		
+		$distance->save();
+		
+		return $distance;
+	
 	}
 
 
