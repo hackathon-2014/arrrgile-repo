@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			
 			# The name user defines to be known in the app, email by default - less @.com
-			$table->string('username');
+			$table->string('username')->nullable();
 			
 			# user password, hashed
 			$table->string('password');

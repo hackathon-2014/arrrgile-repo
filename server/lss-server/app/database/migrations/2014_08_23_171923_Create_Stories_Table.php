@@ -21,10 +21,10 @@ class CreateStoriesTable extends Migration {
 			$table->string('title');
 			
 			# A path to a file
-			$table->string('file_name');
+			$table->string('file_name')->nullable();
 			
 			# The the text string that tells the story
-			$table->string('text');
+			$table->string('text')->nullable();
 			
 			# fk of user id
 			$table->integer('user_id');

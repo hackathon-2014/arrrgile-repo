@@ -18,13 +18,13 @@ class CreateDistancesTable extends Migration {
 			$table->increments('id');
 			
 			# fk of the sotry @ stories table
-			$table->integer('story_id');
+			$table->integer('story_id')->nullable();
 			
 			# fk of the response @ responses table
-			$table->integer('response_id');
+			$table->integer('response_id')->nullable();
 			
 			# Distance the sotry has traveled
-			$table->integer('distance_traveled');
+			$table->integer('distance_traveled')->nullable();
 				
 			#Current Latitude 
 			$table->integer('location_current_lat');

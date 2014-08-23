@@ -21,13 +21,13 @@ class CreateResponsesTable extends Migration {
 			$table->integer('story_id');
 	
 			# the order in which the user updates said sotry
-			$table->integer('story_order');
+			$table->integer('story_order')->nullable();
 	
 			# A path to a file
-			$table->string('file_name');
+			$table->string('file_name')->nullable();
 					
 			# The the text string that tells the story
-			$table->string('text');
+			$table->string('text')->nullable();
 			
 			# fk of user id
 			$table->integer('user_id');
