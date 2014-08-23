@@ -1,0 +1,83 @@
+Laravel Schema Builder
+
+# Table holds each story
+Stories	
+	# AI PK	
+	ID #int
+	
+	# The title of the story, created when a user first builds said sotry
+	title #string
+	
+	# A photo of of the story
+	file_name #long blob // need to might have to rework to path... push to hash.
+	
+	# The the text string that tells the story 
+	text #string 
+
+	# fk of user id
+	user_id #int
+		
+# Table holes the distance for all sotries
+Distances
+	# AI PK	
+	ID #int
+	
+	# fk of the sotry @ stories table
+	story_id #int
+	
+	# fk of the response @ responses table
+	response_id #int
+	
+	# Distance the sotry has traveled
+	distance_traveled #int
+	
+	# Current Latitude 
+	location_current_lat #int
+	
+	# Current Longitude
+	location_current_long #int
+
+
+Responses
+	# AI PK	
+	ID #int
+	
+	# fk of the sotry @ stories table
+	story_id #int
+	
+	# the order in which the user updates said sotry
+	story_order #null
+	
+	# A photo of of the story
+	file_name #long blob // need to might have to rework to path... push to hash.
+		
+	# The the text string that tells the story 
+	text #string
+
+	# fk of user id
+	user_id #int
+	
+	
+# Table to hold each all user
+Users 
+	# AI PK	
+	id #int
+	
+	# The name user defines to be known in the app, email by default - less @.com
+	username # string
+	
+	# user password, hashed
+	password #int
+		
+	# user email
+	email #string
+	
+	# when the user was created
+	timestamps #int
+	
+	# token given by laravel when the user is created, matches client side cookie
+	rememberToken # varchar
+	
+# Client API key
+	# An api auth key the client must match to
+	#app_id #int	
