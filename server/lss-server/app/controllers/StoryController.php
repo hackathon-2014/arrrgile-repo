@@ -17,7 +17,7 @@
 */
 
 class StoryController extends \BaseController {
-
+	
 	/**
 	 * Display a listing of the resource.
 	 * Get a number of stories from the database
