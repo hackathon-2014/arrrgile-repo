@@ -32,28 +32,31 @@ angular.module('starter.services', [])
   // Some fake testing data
   var stories = [
     { 
-      id: 1, 
+      id: 0, 
       name: 'My Great Story',
       replies: [
-        { id: 1, message: 'The story begins with'}
+        { id: 1, text: 'The story begins with', file_name: 'http://placehold.it/300x300' },
+        { id: 2, text: 'more of the story', file_name: 'http://placehold.it/300x300' },
+        { id: 3, text: 'and then something happened', file_name: 'http://placehold.it/300x300' },
+        { id: 4, text: 'and then the end', file_name: 'http://placehold.it/300x300' }
       ]
     },
     { 
-      id: 2, 
+      id: 1, 
       name: 'Once Upon a Time..',
       replies: [
         { id: 1, message: 'in the woods'}
       ]
     },
     { 
-      id: 3, 
+      id: 2, 
       name: 'What had happened was..',
       replies: [
         { id: 1, message: 'i went to walmart'}
       ] 
     },
     { 
-      id: 4, 
+      id: 3, 
       name: 'This one time at bandcamp...',
       replies: [
         { id: 1, message: 'there was a trumpet'}
