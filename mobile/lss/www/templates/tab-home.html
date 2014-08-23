@@ -3,47 +3,16 @@
     <a class="button" ng-click="toggleStories()">{{ typeLabel }}</a>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <ion-list class="list">
-      <div ng-repeat="story in stories" type="item-text-wrap" class="list card">
-        <a href="#/tab/story/{{story.id}}">
-          <div class="item item-avatar">
-            <img src="avatar.jpg">
-            <h2>{{story.name}}</h2>
+    <ion-list>
+      <ion-item ng-repeat="story in stories" type="item-text-wrap" href="#/tab/story/{{story.id}}" class="item item-thumbnail-left">
+            <img ng-src="{{apiServer}}/img/{{story.replies[0].file_name}}">
+            <h2>{{story.title}}</h2>
             <p>Distance traveled</p>
-          </div>
-
-          <div class="item item-image">
-            <img src="http://placehold.it/300x300">
-          </div>
-          <div class="item item-body">
             <p>
               Words and things<br />
               Distance and what not.
             </p>
-            <!-- <p>
-              <a href="#" class="subdued">1 Like</a>
-              <a href="#" class="subdued">5 Comments</a>
-            </p> -->
-          </div>
-
-          <!-- <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#">
-              <i class="icon ion-thumbsup"></i>
-              Like
-            </a>
-            <a class="tab-item" href="#">
-              <i class="icon ion-plus-round"></i>
-              Add to story
-            </a> -->
-          </div>
-
-          <!-- <a class="item item-icon-left assertive" href="#">
-            <i class="icon ion-music-note"></i>
-            Start listening
-          </a> -->
-        
-        </a>
-      </div>
+      </ion>
     </ion-list>
   </ion-content>
 </ion-view>

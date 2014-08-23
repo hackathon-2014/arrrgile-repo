@@ -16,22 +16,6 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <name>lss</name>
-    <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="BackupWebStorage" value="none" />
-    <feature name="StatusBar">
-        <param name="ios-package" onload="true" value="CDVStatusBar" />
-    </feature>
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -49,5 +33,21 @@
     </feature>
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <name>lss</name>
+    <description>
+        An Ionic Framework and Cordova project.
+    </description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
 </widget>

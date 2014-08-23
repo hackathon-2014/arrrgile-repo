@@ -1,10 +1,18 @@
-<ion-view title="Home">
+<ion-view title="Stories">
   <ion-nav-buttons side="right">
-    <a class="button" href="#/tab/create-story">
-      New Story
-    </a>
+    <a class="button" ng-click="toggleStories()">{{ typeLabel }}</a>
   </ion-nav-buttons>
-  <ion-content class="has-header padding">
-    <h1>Home</h1>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item ng-repeat="story in stories" type="item-text-wrap" href="#/tab/story/{{story.id}}" class="item item-thumbnail-left">
+            <img src="http://placehold.it/300x300">
+            <h2>{{story.name}}</h2>
+            <p>Distance traveled</p>
+            <p>
+              Words and things<br />
+              Distance and what not.
+            </p>
+      </ion>
+    </ion-list>
   </ion-content>
 </ion-view>

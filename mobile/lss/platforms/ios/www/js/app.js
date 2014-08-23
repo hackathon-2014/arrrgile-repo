@@ -50,14 +50,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     .state('tab.create-story', {
       url: '/create-story',
       views: {
-        'tab-home': {
+        'tab-create-story': {
           templateUrl: 'templates/tab-create-story.html',
           controller: 'CreateStoryCtrl'
         }
       }
     })
 
-    .state('tab.mystories', {
+    /*.state('tab.mystories', {
       url: '/my-stories',
       views: {
         'tab-my-stories': {
@@ -65,11 +65,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           controller: 'MyStoriesCtrl'
         }
       }
-    })
+    })*/
     .state('tab.story', {
       url: '/story/:storyId',
       views: {
-        'tab-my-stories': {
+        'tab-home': {
           templateUrl: 'templates/tab-story.html',
           controller: 'StoryCtrl'
         }

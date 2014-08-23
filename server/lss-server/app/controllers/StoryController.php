@@ -139,7 +139,7 @@ class StoryController extends \BaseController {
 		catch(Exception $e)
 		{
 			
-			return Response::json($e);
+			return Response::json($e)->setCallback(Input::get('callback'));
 		
 		}
 		

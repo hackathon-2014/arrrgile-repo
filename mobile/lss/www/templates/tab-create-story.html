@@ -7,7 +7,8 @@
     <form ng-submit="createStory(form)" class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Title</span>
-        <input type="text" placeholder="Name your story" ng-model="form.title">
+        <input type="text" placeholder="Name your story" required ng-model="form.title">
+        <span class="error" ng-show="form.title.$error.required">Required!</span><br>
       </label>
       <button class="button button-positive" ng-click="takePicture()">
         Add photo
@@ -15,7 +16,7 @@
       
       <label class="item item-input item-stacked-label">
         <span class="input-label">The Story</span>
-        <textarea placeholder="Your story begins here..." rows="4" ng-model="form.text"></textarea>
+        <textarea placeholder="Your story begins here..." required rows="4" ng-model="form.text"></textarea>
       </label>
       <button type="submit" class="button button-full button-positive">
         Submit

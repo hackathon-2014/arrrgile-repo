@@ -1,13 +1,59 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope) {
+.controller('HomeCtrl', function($scope, Stories) {
+  $scope.currentType = 'all';
+  $scope.typeLabel = 'My Stories';
+
+  $scope.toggleStories = function() {
+    if ($scope.currentType === 'all'){
+      $scope.currentType = 'me';
+      $scope.typeLabel = 'All Stories';
+    } else {
+      $scope.currentType = 'all';
+      $scope.typeLabel = 'My Stories';
+    }
+    loadData();
+  }
+
+  function loadData() {
+    $scope.stories = Stories.all();
+  }
+  loadData();
+
 })
-.controller('CreateStoryCtrl', function($scope, $cordovaCamera) {
+.controller('CreateStoryCtrl', function($scope, $cordovaCamera, $cordovaGeolocation) {
+
+	$scope.form = {};
+
+  $cordovaGeolocation.getCurrentPosition().then(function(position) {
+      // Position here: position.coords.latitude, position.coords.longitude
+      console.log(position);
+      $scope.form.location_current_lat = position.coords.latitude;
+      $scope.form.location_current_long = position.coords.longitude;
+    }, function(err) {
+      // error
+    });
+
+  var watch = $cordovaGeolocation.watchPosition({
+    frequency: 1000
+  });
+
+  watch.promise.then(function() {
+      // Not currently used
+    }, function(err) {
+      // An error occured. Show a message to the user
+    }, function(position) {
+      // Active updates of the position here
+    	console.log(position);
+      $scope.form.location_current_lat = position.coords.latitude;
+      $scope.form.location_current_long = position.coords.longitude;
+  });
+
   $scope.takePicture = function() {
     var options = { 
         quality : 75, 
         destinationType : Camera.DestinationType.DATA_URL, 
-        sourceType : Camera.PictureSourceType.CAMERA, 
+        sourceType : Camera.PictureSourceType.PHOTOLIBRARY, //CAMERA, 
         allowEdit : true,
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 100,
@@ -18,9 +64,15 @@ angular.module('starter.controllers', [])
 
     $cordovaCamera.getPicture(options).then(function(imageData) {
       // Success! Image data is here
+      console.log(imageData);
     }, function(err) {
       // An error occured. Show a message to the user
     });
+  }
+
+  $scope.createStory = function() {
+  	console.log('form', $scope.form)
+
   }
 })
 

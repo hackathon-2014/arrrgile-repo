@@ -5,11 +5,11 @@
   </ion-nav-back-button>
   <ion-content class="has-header padding app-story">
     <div class="story-background">
-        <h1>{{story.name}}</h1>
+        <h1>{{story.title}}</h1>
     </div>
 
       <div ng-repeat="reply in story.replies" type="" class="">
-        <img ng-src="{{reply.file_name}}" />
+        <img ng-src="{{apiServer}}/img/{{reply.file_name}}" />
         <h2>{{reply.text}}</h2>
       </div>
 
