@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, Stories) {
+.controller('HomeCtrl', ['$scope', 'Stories', 'StoriesService', function($scope, Stories, StoriesService) {
   $scope.currentType = 'all';
   $scope.typeLabel = 'My Stories';
+  $scope.stories = [];
 
   $scope.toggleStories = function() {
     if ($scope.currentType === 'all'){
@@ -16,12 +17,17 @@ angular.module('starter.controllers', [])
   }
 
   function loadData() {
-    $scope.stories = Stories.all();
+    //$scope.stories = Stories.all();
+    
+    $scope.stories = StoriesService.query(function() {
+      console.log('stories',$scope.stories);
+    });
+      console.log('stories',$scope.stories);
   }
   loadData();
 
-})
-.controller('CreateStoryCtrl', function($scope, $cordovaCamera, $cordovaGeolocation) {
+}])
+.controller('CreateStoryCtrl', ['$scope', '$cordovaCamera', '$cordovaGeolocation', 'StoriesService', '$http', function($scope, $cordovaCamera, $cordovaGeolocation, StoriesService, $http) {
 
 	$scope.form = {};
 
@@ -56,8 +62,8 @@ angular.module('starter.controllers', [])
         sourceType : Camera.PictureSourceType.PHOTOLIBRARY, //CAMERA, 
         allowEdit : true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 100,
-        targetHeight: 100,
+        targetWidth: 500,
+        targetHeight: 500,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
     };
@@ -65,6 +71,7 @@ angular.module('starter.controllers', [])
     $cordovaCamera.getPicture(options).then(function(imageData) {
       // Success! Image data is here
       console.log(imageData);
+      $scope.form.file_name = imageData;
     }, function(err) {
       // An error occured. Show a message to the user
     });
@@ -73,28 +80,58 @@ angular.module('starter.controllers', [])
   $scope.createStory = function() {
   	console.log('form', $scope.form)
 
-  }
-})
+  	$scope.form.user_id = '1';
 
-.controller('MyStoriesCtrl', function($scope, Stories) {
+    StoriesService.save($scope.form);
+
+  	/*$scope.saveThis = new StoriesService(); //You can instantiate resource class
+ 
+  	$scope.saveThis.title = $scope.form.title;
+  	$scope.saveThis.location_current_lat = $scope.form.location_current_lat
+  	$scope.saveThis.location_current_long = $scope.form.location_current_long
+  	$scope.saveThis.file_name = $scope.form.file_name;
+  	$scope.saveThis.text = $scope.form.text;
+  	$scope.saveThis.user_id = $scope.form.user_id;
+ 
+  	StoriesService.save($scope.saveThis, function() {
+	}); */
+
+			/*$http({
+            url: 'http://192.168.22.10/api/story',
+            method: "POST",
+            data: $scope.form,
+            dataType: 'jsonp'
+        }).success(function (data, status, headers, config) {
+                console.log(data, status, headers, config)
+            }).error(function (data, status, headers, config) {
+                console.log('error',data, status, headers, config)
+            });*/
+
+  }
+}])
+
+.controller('MyStoriesCtrl', ['$scope', 'Stories', function($scope, Stories) {
   $scope.stories = Stories.all();
   console.log($scope.stories);
-})
-.controller('StoryCtrl', function($scope, $stateParams, Stories) {
+}])
+.controller('StoryCtrl', ['$scope', '$stateParams', 'Stories', 'StoriesService', function($scope, $stateParams, Stories, StoriesService) {
 	console.log('test');
-  $scope.story = Stories.get($stateParams.storyId);
+  //$scope.story = Stories.get($stateParams.storyId);
+  $scope.story = StoriesService.get({id:$stateParams.storyId},function() {
+      console.log('stories',$scope.story);
+    });
   console.log($scope.story);
-})
+}])
 
 
 
-.controller('FriendsCtrl', function($scope, Friends) {
+.controller('FriendsCtrl', ['$scope', 'Friends', function($scope, Friends) {
   $scope.friends = Friends.all();
-})
+}])
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
+.controller('FriendDetailCtrl', ['$scope', '$stateParams', 'Friends', function($scope, $stateParams, Friends) {
   $scope.friend = Friends.get($stateParams.friendId);
-})
+}])
 
-.controller('AccountCtrl', function($scope) {
-});
+.controller('AccountCtrl', [function($scope) {
+}]);

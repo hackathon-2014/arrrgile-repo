@@ -80,10 +80,10 @@ angular.module('starter.services', [])
       return $resource($rootScope.apiServer+'/api/story/:id', { callback: 'JSON_CALLBACK' }, {
       query: { method: 'JSONP', params:null, isArray: true},
       get: { method: 'JSONP', params:null},
-      save: { method: 'POST', headers: {'Content-Type': 'application/json'}}
+      save: { method: 'POST', params:null}
     });
   }]
 );
-
+// headers: {'Content-Type': 'application/json'}
 
 ;

@@ -58,6 +58,9 @@ class StoryController extends \BaseController {
 		# post data					
 		$data = Input::all();	
 		
+//var_dump($data);
+		Log::info($data);
+
 		# Instantiate new model instance
 		$story = new Story();
 		
@@ -79,9 +82,11 @@ class StoryController extends \BaseController {
 		
 		catch(Exception $e)
 		{
-			return Response::json($e);
+			return Response::json($e)->setCallback(Input::get('callback'));
 		}
 		
+				Log::info('1111');
+
 		$reply = new Reply();
 		
 		# The the text string that tells the story
@@ -105,12 +110,12 @@ class StoryController extends \BaseController {
 			file_put_contents($destinationPath . $fileName .'.jpeg', $image);
 			
 			#store location in db
-			$reply->file_name = $fileName .'.jpeg';
-			
-			
-			$story->replies()->save($reply);
+			$reply->file_name = $fileName .'.jpeg';			
 		}
-		
+		$story->replies()->save($reply);
+
+		Log::info('2222', $reply->toArray());
+
 		# Distance
 		$distance = new Distance();
 		
@@ -126,6 +131,9 @@ class StoryController extends \BaseController {
 		# Current Longitude (SPARC HQ)
 		$distance->location_current_long =  $data['location_current_long'];
 		
+
+								Log::info('33333');
+
 		# Eloquent, do yo thang! 
 		try
 		{
@@ -133,6 +141,9 @@ class StoryController extends \BaseController {
 			# Eloquent Magic
 			$reply->distance()->save($distance);
 			
+
+									Log::info('4444');
+
 			return Response::json($story)->setCallback(Input::get('callback'));
 		
 		}

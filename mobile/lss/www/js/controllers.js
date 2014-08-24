@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   loadData();
 
 }])
-.controller('CreateStoryCtrl', ['$scope', '$cordovaCamera', '$cordovaGeolocation', 'StoriesService', function($scope, $cordovaCamera, $cordovaGeolocation, StoriesService) {
+.controller('CreateStoryCtrl', ['$scope', '$cordovaCamera', '$cordovaGeolocation', 'StoriesService', '$http', '$location', function($scope, $cordovaCamera, $cordovaGeolocation, StoriesService, $http, $location) {
 
 	$scope.form = {};
 
@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
 
     $cordovaCamera.getPicture(options).then(function(imageData) {
       // Success! Image data is here
-      console.log(imageData);
+      //console.log(imageData);
       $scope.form.file_name = imageData;
     }, function(err) {
       // An error occured. Show a message to the user
@@ -80,7 +80,37 @@ angular.module('starter.controllers', [])
   $scope.createStory = function() {
   	console.log('form', $scope.form)
 
-    StoriesService.save($scope.form);
+  	$scope.form.user_id = '1';
+
+    StoriesService.save($scope.form, function(){
+
+    	$location.path('/tabs/home');
+
+    });
+
+  	/*$scope.saveThis = new StoriesService(); //You can instantiate resource class
+ 
+  	$scope.saveThis.title = $scope.form.title;
+  	$scope.saveThis.location_current_lat = $scope.form.location_current_lat
+  	$scope.saveThis.location_current_long = $scope.form.location_current_long
+  	$scope.saveThis.file_name = $scope.form.file_name;
+  	$scope.saveThis.text = $scope.form.text;
+  	$scope.saveThis.user_id = $scope.form.user_id;
+ 
+  	StoriesService.save($scope.saveThis, function() {
+	}); */
+
+			/*$http({
+            url: 'http://192.168.22.10/api/story',
+            method: "POST",
+            data: $scope.form,
+            dataType: 'jsonp'
+        }).success(function (data, status, headers, config) {
+                console.log(data, status, headers, config)
+            }).error(function (data, status, headers, config) {
+                console.log('error',data, status, headers, config)
+            });*/
+
   }
 }])
 

@@ -3,7 +3,7 @@ angular.module('starter.services', [])
 /**
  * A simple example service that returns some data.
  */
-.factory('Friends', function() {
+.factory('Friends', [function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -23,7 +23,7 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
-})
+}])
 
 
 .factory('Stories', function() {
@@ -74,5 +74,16 @@ angular.module('starter.services', [])
     }
   }
 })
+
+.factory('StoriesService', ['$resource', '$http', '$rootScope', function($resource, $http, $rootScope) {
+      $http.defaults.useXDomain = true;
+      return $resource($rootScope.apiServer+'/api/story/:id', { callback: 'JSON_CALLBACK' }, {
+      query: { method: 'JSONP', params:null, isArray: true},
+      get: { method: 'JSONP', params:null},
+      save: { method: 'POST', params:null}
+    });
+  }]
+);
+// headers: {'Content-Type': 'application/json'}
 
 ;
