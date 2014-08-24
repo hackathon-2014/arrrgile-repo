@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngResource'])
 
 .run(function($ionicPlatform, $rootScope) {
-  $rootScope.apiServer = 'http://192.168.22.10';
+  $rootScope.apiServer = 'http://lss.pkat.me'; //http://192.168.22.10';
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
